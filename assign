@@ -1,0 +1,179 @@
+BIG Data
+Assignments
+Q1. What is Data?
+Ans
+•	Data refers to facts, figures or pieces of information that are collected, Stored and processed to be used for various purposes. 
+•	Data can take many forms such as Numbers, texts, images, videos, and more.
+•	There are different Types of Data
+o	Structured Data 
+o	Semi Structured Data 
+o	Unstructured Data
+	Structured Data
+•	Organised in Specific format, often in Databases (eg. Spreadsheets, tables)
+•	Data which is in the table format Relational Databases
+	Semi Structured Data
+•	Data which is in xml and Pdf format and emails
+	Unstructured Data 
+•	Not organised in a pre-defined manner(eg. Text doc., Images, Audio and video)
+•	Data is crucial in various fields, including business science and technology where it is Analyzed to gain insights, make predictions and support decision
+Q2 What is Big Data?
+Ans 
+•	Large Amount of Data
+•	Exponential growth of data
+•	Big data is difficult to store collect, maintain, Analyse and visualize
+•	Any data which is beyond the storage and processing capacity of a single centralized server and which is Satisfies 3. V’s
+o	Volume 
+	Size of Data
+	Large Amount of data
+o	Velocity 
+	The rate of which the data is getting generated
+o	Variety
+	Different type of Data
+•	Structured Data   MySql
+•	Semi Structured    XML, JSON
+•	Unstructured Data  Text, Audio, Video
+
+
+
+Q3 What is Hadoop & its features.
+Ans
+•	 Hadoop is an open-source framework that allows for the distributed processing of large data sets across the clusters of computers (group of Systems/Machines) using simple programming models
+•	It is Designed to scale up from single server to thousands of machines, each offering local computation and storage.
+•	Hadoop is core component of the Apache software ecosystem and is commonly used in big data processing
+________ Key Features of Hadoop___________
+•	HDFS (Hadoop Distributed File System)
+o	HDFS is the storage layer of Hadoop. It is designed to store large files across multiple machines in a distributed manner, ensuring high availability and fault tolerance. HDFS splits large files into blocks and distributes them across different nodes in the cluster.
+•	   MapReduce
+o	MapReduce is the data processing layer of Hadoop. It is a programming model used for processing and generating large data sets. A MapReduce job is typically divided into two phases: 
+	Map: Processes input data and converts it into a set of key-value pairs.
+	Reduce: Aggregates and processes these key-value pairs to produce the final output.
+•	Scalability
+o	Hadoop is highly scalable, enabling it to process petabytes of data by adding more node to the cluster. This horizontal scalability is one of its core strengths of hadoop
+•	Fault Tolerance
+o	 Hadoop is designed to handle hardware failures automatically. Data is replicated across multiple nodes in the cluster, ensuring that if one node fails, the data is still available from another node.
+o	
+Q4 Difference Between RDBMS and Hadoop
+Ans
+Aspects	Hadoop	RDBMS
+Data Structures	Hadoop can handle the Structured and Unstructured Data	It can handle only Structured Data
+Scalability	Horizontal Scaling: add commodity Hardware	Vertical Scaling: Enhanced Single Server
+Processing Paradigm	Batch Processing using MapReduce and Spark	Interactive querying using SQL
+Use Cases	Big Data Analytics, log processing, data Lake	Transactional application and
+Relational Data 
+Cost	Open-Source Software, Commodity Hardware	Licensing fees, Hardware upgrades
+
+Q5. What is Distributed File System
+Ans
+Distributed File System is a file system that allows files to be stored, accessed, and managed across multiple machines or servers in a network.
+DFS provides a way to distribute and replicate data across various nodes, which can be located in different physical locations. 
+____________Key Features of a Distributed File System__________
+1. Transparency:
+   Location Transparency: Users and applications access files without needing to know the physical location of the data. The DFS abstracts the underlying complexity of data distribution.
+   Replication Transparency: Files may be replicated across multiple servers, but users see a single, consistent file.
+2. Scalability:  DFS can scale out by adding more servers or nodes to the system, thereby increasing storage capacity and improving performance.
+3.Fault Tolerance: Data is typically replicated across multiple servers. If one server fails, the DFS can retrieve the data from another server, ensuring high availability and data integrity.
+4. Concurrency:
+   DFS allows multiple users to access and modify files simultaneously. Mechanisms are in place to handle file locking, version control, and synchronization.
+5. Performance:
+   - DFS can optimize performance by placing data closer to where it’s needed, using techniques like data caching and load balancing.	
+
+In summary, a Distributed File System enables efficient storage and retrieval of data across multiple servers, providing advantages in scalability, fault tolerance, and availability, making it essential for handling large-scale data processing and storage needs in distributed computing environments
+Q6. What is Cluster
+Apache Hadoop is an open source, Java-based, software framework and parallel data processing engine. 
+A Hadoop cluster is a collection of computers, known as nodes, that are networked together to perform kinds of parallel computations on big data sets. 
+Hadoop clusters are designed specifically to store and analyze mass amounts of structured and unstructured data in a distributed computing environment. 
+Hadoop ecosystems from other computer clusters are their unique structure and architecture. Hadoop clusters consist of a network of connected master and slave nodes that utilize high availability, low-cost commodity hardware.
+
+Day2
+Q.What is the difference between Local File Systems and Distributed File Systems
+Local File System	Distributed File System
+LFS stores data as a single block.	DFS divides data as multiple blocks and stores it into different DataNodes.
+LFS uses Tree format to store Data.	DFS provides Master-Slave architecture for Data storage.
+Data retrieval in LFS is slow.	Data retrieval in DFS is fast.
+It is not reliable because LFS data does not replicate the Data files.	It is reliable because in DFS data blocks are replicated into different DataNodes.
+LFS is cheaper because it does not needs extra memory for storing any data file.	DFS is expensive because it needs extra memory to replicate the same data blocks.
+Files can be accessed directly in LFS.	Files can not be accessed directly in DFS because the actual location of data blocks are only known by NameNode.
+LFS is not appropriate for analysis of very big file of data because it needs large time to process.	DFS is appropriate for analysis of big file of data because it needs less amount of time to process as compare to Local file system.
+LFS is less complex than DFS.	DFS is more complex th
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Day3
+Q What is Hadoop Configuration Files
+> hadoop-env.sh
+-> core-site.xml
+-> hdfs-site.xml
+-> mapred-site.xml
+-> masters
+-> slaves
+-> yarn-site.xml
+Q. How the Storage part in Hadoop Works
+
+Assignement
+
+What is YArn ARCHITECTURE
+ resource Manager
+Schedular
+Application manager
+application Master
+containers
+submitting application in yarn
+yarn jar
+
+differnce b/w 1.x and 2.x
+
+Assignment
+NameNode metadata
+fsimage edits log file
+checkpointing process in hadoop
+secondarynamenode and its functions
+namenode safenode state
+hdfs oiv
+hdfs oev
+
+DAY 12 assignement
+https://medium.com/@traininghub.io/hadoop-mapreduce-architecture-7e167e264595
+
+-what is Mapreduce architecture
+
+- what is a record reader
+-what is splits
+-difference betweem block and splits
+-submit the wordcount programm
+- yarn application commands
+
+Day 14
+-Mysql DML and DDL Commands with examples
+- sqoop 
+	-list-databases;
+	-list-tables
+	-import (Primary key table, Non Primary Key table)
+	- importing the table to specified directory
+
+
+
+
+
+
+
+
+
+
+
+	
