@@ -1,0 +1,542 @@
+Unix notes
+
+What is Operating system:
+Interface between the user and the computer hardware 
+
+Functions of Operating System:
+1.Memory Management
+2.Processor Management 
+3.Device Management 
+4.File Management 
+5.Security 
+6.Job Scheduling 
+7.Error Detecting 
+
+Features of Unix:
+1.Multi User - more than 1 user can parallely use the machine 
+2.Multi tasking - multiple programs will run at the same time 
+3.Multi process - execute several processes simultaenously 
+4.Open Source-source code is available for free of cost 
+5.Highly secured 
+6.Portability - transefer data from 1 system to anither 
+7.Programming facility - scripting is available 
+
+Basic Commands:
+ls - list all the contents available 
+ls -a - list all the hidden files 
+ls -l - longlisting 
+ls -lrt 
+
+Work with directory:
+mkdir dir_name 
+cd dir_name 
+pwd - present working directory 
+rmdir dir_name- only when dir is empty 
+rm -r dir_name - recursively remove files from the dir
+cd .. - navigate to previous directory 
+
+Working with the files:
+1.touch - create the file
+
+2.cat - create,write,read,append
+create/write
+cat > filename - create a file and if the content is already existing it will overwrite 
+if not available-create
+if available-overwrite 
+read:
+cat < filename 
+cat filename 
+append:
+cat >> filename -- data is added in the existing file
+
+concate
+cat file1 file2 >file3
+
+
+cat command:
+-n - to number all the output lines 
+-s - to supress the repeated empty lines 
+-b - to number non empty output lines
+ 
+3.vi -create,edit
+4.cp -copy
+5.mv -move
+6.tar to zip, unzip, archive files
+
+cal:
+used to print calender of the current month 
+-1 - to display current month calender 
+-3 - display prev/cur/next month calender 
+-m - displays monday as first day 
+-s - displays sunday as first day 
+-y - display whole year calender 
+Req:
+Print prev/cur/next month calender with monday as first day
+
+date:
+used to print current date in a predefined format 
+Req:
+19/Sep-2022
+September 2022/19 12:01
+cal - dd/mm/yyyy
+date - mm/dd/yy
+
+date +"%option"
+%a - weekday name - Sun 
+%A - full weekday name - Sunday 
+%b - month name -Jan 
+%B - full month name - January 
+%c - both date and time 
+%C - century 
+%d - day of the month (01-31)
+%m - months (01-12)
+%y - last 2 digits of the year 99/98
+%Y - all 4 digits - 1999/1994
+%H - hours in 24 hr format 
+%I - hours in 12 hr format 
+%M -  minute (00-59)
+%S - second(00-59)
+%X - same as %d:%m:%y
+
+who command:
+to display the users who have logged into unix 
+-m - display all info for the logged in users 
+-a - display all info for all the logged in users 
+-q - display all login usernames and no.of users 
+-H - display info with headings 
+
+
+uname command:
+to print the operating system name 
+-o - print operating system name 
+-p - processor type 
+-s - kernel name 
+-n - network name 
+-r - kernel release 
+-v - kernel version 
+
+
+echo command:
+to print anything on the terminal 
+-e - to enable interpretation on blackslash 
+-n - do not output the trailing line 
+ex.
+$ echo -e "Hi.\n how are you?"
+Hi.
+ how are you?
+
+
+bc command:calculator 
+
+
+tty command:prints terminal info 
+
+
+which command:
+display information path in which command/software is installed 
+
+wc command:
+to print the word count 
+wc options filename 
+-l  to print the line count
+-w - word count 
+-c - byte count 
+-m - character count 
+
+
+Pipelining command: |
+output of 1 command will be given as input to another command 
+uni directional 
+
+
+Text Processing:
+head, tail:
+command used to list bottom/recently appended n records 
+option filename 
+-n - no. of lines 
+-c - no. of bytes 
+-f - follow the changes in the file
+-s - sleep interval 
+tail -f -s10 filename 
+
+
+cut command:
+choose the delimiter wisely 
+delimiter has to be single character 
+
+-d - delimiter - anything to seggregate my data 
+-f - cut the data column wise /select only fields
+-b - select only bytes 
+-c - select only characters 
+
+
+sort command:
+re arrange the content in the file either in ascending/ descending order 
+number/alphabetical(lower,uppercase)
+-t - delimiter 
+-k - select only fields 
+-r - reverse sort 
+-n - numerical sort 
+-u - remove duplicate lines 
+-c - check whether its been sorted or not 
+
+
+uniq command:
+sort initially and then give it to uniq command 
+-u - select non repeated lines 
+-d - select duplicate lines 
+-c  count the frequency of occurence 
+
+
+command for transfering dir data in file in list format:
+
+find /"directory/file path"/ -type f > "filename"
+
+eg. find /optim_nearline/RESIDUAL_PREFLIGHT -type f > optim_nearline_residualpreflight.txt
+
+
+
+command for sending file on mail from unix:
+
+echo “PFA” | mailx -s “file” -a filename mailid@bell.ca
+
+ | -pipeline
+ -s subject of mail
+ -a attachement to be send
+ -c to add in cc
+ -b to add in bcc
+eg.echo “PFA” | mailx -s “FROM_SCREPORTS_DECOM” -a optim_nearline_FROM_SCREPORTS_DECOM.txt vijay.deogire@bell.ca
+
+to add multiple files:  echo “PFA” | mailx -s “file” -a file1 -a file2 -a file3 mailid@bell.ca
+
+
+--------------------------------------------------------------------------
+
+
+tr command:
+translate from 1 form to another form 
+tr exp1 exp2 
+-d - delete the characters 
+-s - compress mutliple consecutive character 
+-c - compliment the value f expression 
+
+rev command:
+to reverse the text/lines character wise
+
+comm command:
+initially sort the file 
+compare 2 files line by line and the output will have 3 columns
+
+diff command:
+a-add
+d-delete
+c-change 
+< - first file 
+> - second file 
+
+Types of RE:
+1.Basic Regular Expression
+grep options 'pattern' filename 
+-i - to ignore the cases sensitive
+-x - match the pattern as a whole line 
+-n - to number the o/p lines 
+-v - select non matching pattern only 
+-E - ERE 
+
+2.Extended Regular Expression
+grep -E / egrep 
+
+3.Perl regular expression 
+grep -P
+
+Usage:
+1.validate the data 
+2.to fetch any filter 
+presence of set of token/keywords/pattern
+
+Metacharacters:
+These are some special characters having special meaning in pattern matching 
+^ - starts with 
+$ - ends with 
+[]-group the characters 
+[pqrs] - match anything inside the brace with p/q/r/s 
+{m,n}- length. m-min length,n-max length 
+{1,10}
+{m} - exactly m length 
+{m,}- m-min length,max can be any length 
+{1,}
+{,n}- min of anything but max of n length
+{,10} a=1
+(this|that) - or 
+*-0/more occurences of previous char 
+a* - a/aaa/aaaaa/aaaaaa/
++-1/more occurences of peviuos char 
+a+ - aa/aaa/aaa/aaaaa
+? - optional 
+
+Validate the Name:
+name should contain only characters 
+should not have digits or special characters 
+
+Validation for Email:
+evrything in small characte,after char _ and digits
+@
+domain name either .com or .in 
+
+Ex:
+successful:
+dhana_12@infosys.com 
+[er1118220@BL1UL056 Unix_Sep19]$ echo "dhana_12@infosys.com"|egrep ""[a-z]+_[0-9]+@[a-z]+[a-z]""
+dhana_12@infosys.com
+
+Validate the name 
+first name - only chars,first letter as capital,no digits/spl char
+middle name - only chars,first letter as capital,no digits/spl char ,can be optional
+last name - only chars,first letter as capital,no digits/spl char
+
+Access Permission:
+Three kinds of users:
+1.owner/user -dhana
+2.group-apache
+3.others -anybody else than me 
+d - directory 
+- - normal file 
+l - symbolic link
+
+Three kinds of permission:
+1.read
+2.write
+3.execute 
+drwxrwxrwx  
+------------------------------------------------------------------------
+
+chmod:
+to compute permissions on already existing files 
+chmode options mode filename 
+options:
+-R - recursively change the permission to the files under a directory 
+--reference - set permission of file 1 t file2 
+
+mode:
+ugo+-=[rwx]
+u-user
+g-group
+o-others
++ - add
+- - remove 
+= - reassign 
+1.symbolic representation
+2.octal representation
+
+
+Working with VI Editor:
+Three modes of operation:
+1.Command mode - keys are interpreted as a command 
+2.Insert mode - keys are interpreted as raw text 
+3.Escape mode - keys are interpreted for saving and exiting the editor 
+
+In command mode:
+Navigate the cursor
+(hjkl)->(left/down/up/right)
+(n)h
+(n)j
+(n)k
+Copy and paste 
+(n)yy - copy n lines 
+p - paste copied line after current line 
+P - pase copied line before current line 
+Delete text:
+(n)x - delete n characters after the cursor 
+(n)X - delete n chars before the cursor 
+(n)dd - delete n lines from current line
+
+In insert mode:
+i - insert data before cursor 
+I - insert data at start of current line 
+a - insert data after cursor 
+A - insert data at end of current line 
+o - starts a new line after cursor 
+O - starts new line before cursor 
+
+In escape mode:
+save and quit:
+esc button 
+:w - save changes 
+:q - come out of the editor but changes will not be saved 
+:wq - save and quit the editor 
+:q! -  exit the editor forcefully
+
+--------------
+Basics of Shell Scripting:
+comprises of mutliple commands to perform specific task 
+Execute the shell script:
+1.sh filename.sh - execute the shell script in a subshell and gives back the output in the parent shell 
+2. . filename.sh - execute the shell script in the current shell and does'nt invoke sub shell 
+3. add the pwd to the path variable 
+
+Shell Variables:
+to store the data 
+3 types of shell variables available:
+1.user defined variables 
+2.arrays
+3.special variables
+
+Arrays:
+array_name=()
+$ echo ${arr} - prints first variable
+$ echo ${arr[*]} / echo ${arr[@]} - prints the whole line
+$ echo ${#arr[@]} / echo ${#arr[*]} - prints the total count
+$ echo ${#arr[n]} - prints the count of characters
+
+Special Variables:
+$0 - current script name 
+$1 - first argument 
+$2 - second argument 
+$3 - third argument 
+.........
+$# - no. of arguments 
+$@ - rgs sent in command line 
+
+------------------------------------------------------------------------
+
+Command Substituition: Used for making the long commands in short form. 
+
+Control Structures:
+1.Selective control structure-if family,case
+2.Iterative control structure-while,until,for 
+simple if:
+if [ condition ]
+then 
+	//logic 
+fi 
+Relational operators
+> -gt
+< -lt 
+>= -ge 
+<= -le
+== -eq 
+!= -neq
+
+if - else block:
+if [ condition ]
+then 
+	//logic 
+else 
+	//logic
+fi 
+
+if elseif block:
+if - else block:
+if [ condition ]
+then 
+	//logic 
+elif [ condition ]
+then 
+	//logic 
+..............
+else 
+	//logic
+fi
+
+case block:
+case condition in 
+then 
+case 1) //logic ;;
+case 2) //logic ;;
+case 3) // logic;;
+*) // default ;;
+esac
+
+while loop:
+loop will be executed when the condition is true 
+if the condition is false, loop wil be terminated 
+0 1 2 3 4 5 
+while [ condition ] 
+do 
+	//logic 
+done
+
+eg:-
+a=0
+while [ $a -le 5 ]
+do 
+	echo $a
+	a=`expr $a + 1`
+done 
+
+a=0
+if(0<=5) true 
+0
+a=1
+if(1<=5) true
+1
+a=2
+if(5<=5) true
+5
+if(6<=5) false
+until:
+loop will be executed when the condition is false 
+if the condition is true, loop wil be terminated 
+
+until:
+loop will be executed when the condition is false 
+if the condition is true, loop wil be terminated 
+
+syntax
+until [ condition ]
+do 
+	logic
+done
+
+eg:-
+a=0
+until [ $a -gt 5 ]
+do 
+	echo $a
+	a=`expr $a + 1`
+done
+
+for loop:
+for i in condition 
+do 
+	logic
+done
+
+Data Backup:
+copy and move 
+
+copy command:
+copy and paste
+cp option source_path dest_path 
+-i - interactive prompt for overwriting 
+-R - recursvily copy files from a dir
+-s - make symbolic link 
+-u - update the dest file 
+-n - not to overwrite
+
+Move command:
+cut and paste 
+mv option source_path dest_path 
+-i 
+-n 
+-u
+
+Archiving files:
+tar and cpio 
+tar option output_file.tar input_file 
+-cvf - create archive for the file 
+-xvf - extract all 
+-tvf - list all the tar files 
+-rvf - append files to the existing tar 
+
+cpio:
+-ov - create an archive 
+creating > 
+-idv - extract all 
+extract < 
+-it - list the files 
+cpio -idv < all.cpio
+
+
+
+ 
