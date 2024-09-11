@@ -1,0 +1,157 @@
+sudo su -
+	switch the root user
+
+fdisk -l
+	it gives the drives and disks
+	and also shows the Disk Size memories how much mb/gb etc
+
+blkid
+	blkid and fdisk work same both gives the connected 	drives but in blkid it doesn't shows the disk Size
+
+fdisk /dev/xvdbc
+	/dev/xvdbc is the 10gb added volume space
+
+m -  for help
+n -  primary and extended
+e -  partition(1-4) default is 1
+enter +1G enter p-to print
+
+t -  to change the file system type
+l - list all 
+8E - to change to file system to LVM p to print
+
+
+to create physical volume
+pvcreate /dev/xvdbc1 
+
+pvs - to check the created Phsical volume
+pvdisplay -  to display in details
+
+now we have to create the volume group
+
+vgcreate vgavdgroup /dev/xvdbc1 
+vgs or vgdisplay to check what are the volume groups
+
+now to create logical volume
+lvcreate -L +1Gb/1000m -n lvwebserver vgavdgroup
+
+-n -> to new volume groupo
+-lvwebserver -> is the lv name 
+-vgavdgroup -> the volume group on the top of we are creating		 the logical volume
+
+lvs or lvdisplay
+______
+Now our ultimate goal is to create the mount point /webserver
+and give it to the server team
+for the we have to create the directory
+__ Mountpoint is the place where we can place our data
+
+mkdir /webserver -> Directory Name
+
+
+mount /dev/vgname/lvname /destination
+
+____________
+mkfs -make file system
+
+mkfs.xfs /dev/vgavdroup/lvwebserver
+
+apt install xfsprogs
+-- to install the xfs packages
+
+mkfs.xfs /dev/vgavdgroup/lvwebserver
+
+_______________
+
+we almost mounted webserver on mountpoint
+but if we reboot our server that webserver mountpoint will not be mounted because we didn't make it permanent
+
+-in order to make it permanent we have to give the entry in the file called /etc/fstab file
+
+__vi /etc/fstab
+
+	-to make the entry
+--/dev/vgname/lvname /mountpointname fsname defaults 0 0 
+-- /dev/vgavdgroup/lvwebserver /webserver Xfs defaults 0 0
+-- 0 0 -> means if I give it 0 0 it means whenever the File        	system is rebooted I don't want the my file system to 	be checked
+
+
+
+____________________________________________________________
+1  who
+    2  fdisk
+    3  fdisk -l
+    4  blkid
+    5  df -h
+    6  fdisk
+    7  fdisk -l
+    8  blkid
+    9  fdisk -l
+   10  fdisk
+   11  fdisk -l
+   12  fdisk /dev/xvdbc
+   13  blkid
+   14  pushpadantanath@9
+   15  pvcreate /dev/xvdbc1
+   16  yum whatprovides lvm
+   17  YUM whatprovide lvm
+   18  yum whatprovides lvm
+   19  YUM whatprovides lvm
+   20  dnf whatprovides lvm
+   21  dnf
+   22  dnfs
+   23  dnf
+   24  yum
+   25  yum install lvm2
+   26  pvs
+   27  pv display
+   28  pvdisplay
+   29  vgcreate vgavdgroup /dev/xvdbc1
+   30  vgs
+   31  lvcreate -L +1G -n lvwebserver /vgavdgroup
+   32  lvcreate -L +1G -n lvwebserver vgavdgroup
+   33  lvcreate -L +1000m -n lvwebserver /vgavdgroup
+   34  lvcreate -L +1000m -n lvwebserver vgavdgroup
+   35  vgs
+   36  mkdir /webserver
+   37  df- 
+   38  df -h
+   39  lvs
+   40  lvdisplayu
+   41  lvdisplay
+   42  mount /dev/vgavdgroup/lvwebserver /webserver
+   43  mkfs
+   44  mkfs.xfx /dev/vgavdgroup/lvwebserver
+   45  sudo apt install xfsprogs
+   46  mkfs.xfs /dev/vgavdgroup/lvwebserver
+   47  mount /dev/vgavdgroup/lvwebserver /webserver
+   48  df -h
+   49  vi /etc/fstab
+   50  cat /etc/mtab
+   51  vi /etc/fs
+   52  vi /etc/fstab
+   53  umount /webserver
+   54  df -h
+   55  mount /webserver
+   56  mount -a
+   57  vi /etc/fstab
+   58  mount -a
+   59  sudo mount -a
+   60  df -h
+   61  vgdiplay
+   62  vgdisplay
+   63  fdisk -l
+   64  df -T
+   65  cd /webserver
+   66  umount /webserver
+   67  history
+   68  ls
+   69  pwd
+   70  ls -ld /webserver
+   71  chmod 750 webserver
+   72  chmod 750 /webserver
+   73  ls -ld /webserver/
+   74  chown -R webserver:webserver /webserver
+   75  man pvs
+   76  man lvm
+   77  history
