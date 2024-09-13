@@ -1,0 +1,19 @@
+run the command without logging to the instance
+  
+
+ 1 cd \Userz
+   2 cd \Users\vishal.waykos\Downloads
+   3 dir
+   4 dir
+   5 scp vishWeb.txt.txt -i "puttysession.pem" ubuntu@13.233.122.224:/home/ubuntu
+   6 scp vishWeb.txt.txt -i "puttysession.pem" ubuntu@13.233.122.224:/home/ubuntu
+   7 scp -i "puttysession.pem" vishWeb.txt.txt ubuntu@13.233.122.224:/home/ubuntu
+   8 ssh -i "puttysession.pem" ubuntu@13.233.122.224 ls -ld /home/ubuntu
+   9 ssh -i "puttysession.pem" ubuntu@13.233.122.224 ls -ld /home/ubuntu/*
+  10 ssh -i "puttysession.pem" ubuntu@13.233.122.224 cat /home/ubuntu/vishWeb.txt.txt
+  11 scp -i "puttysession.pem" vishWeb.txt.txt ubuntu@13.233.122.224\/home/ubuntu
+  12 scp -i "puttysession.pem" vishWeb.txt.txt ubuntu@13.233.122.224/home/ubuntu
+  13 scp -i "puttysession.pem" vishWeb.txt.txt ubuntu@13.233.122.224:/home/ubuntu
+  14 ssh -i "puttysession.pem" ubuntu@13.233.122.224 ls -ld /home/ubuntu/*
+  15 ssh -i "puttysession.pem" ubuntu@13.233.122.224 cat /home/ubuntu/vishWeb.txt.txt
+  16 ssh -i "puttysession.pem" ubuntu@13.233.122.224
