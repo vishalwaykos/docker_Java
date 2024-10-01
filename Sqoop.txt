@@ -1,0 +1,125 @@
+Basic import
+------------
+
+sqoop import   <------ tool
+--connect jdbc:mysql://blrkecetarhl01/products 
+--username root
+-P                                     
+--table products 
+
+Target-dir
+----------
+
+sqoop import   <------- tool
+--connect jdbc:mysql://blrkecetarhl01/products
+--username root
+-P                                     
+--table products
+--target-dir /user/etauser/product_target <------ HDFS destination dir
+
+Number of Mapper
+----------------
+
+sqoop import                <-------------------- tool
+--connect jdbc:mysql://blrkecetarhl01/products
+--username root
+-P                                     
+--table products
+--num-mappers 1             <-------------------- configure the number of mappers
+--target-dir /user/etauser/product_mapper <------ HDFS destination dir
+
+Where
+-----
+
+sqoop import                <-------------------- tool
+--connect jdbc:mysql://blrkecetarhl01/products
+--username root
+-P                                     
+--table products
+--where "productID < 1003"            <---------- configure the number of mappers
+--target-dir /user/etauser/product_where  <------ HDFS destination dir
+
+Query
+-----
+
+sqoop import                <-------------------------- tool
+--connect jdbc:mysql://blrkecetarhl01/products
+--username root
+-P                                     
+--query 'select * from products WHERE $CONDITIONS' <--- import using query
+--split-by productID                  <---------------- used for slicing
+--target-dir /user/etauser/product_query  <------------ HDFS destination dir
+
+Query with WHERE
+----------------
+
+sqoop import                <-------------------------- tool
+--connect jdbc:mysql://blrkecetarhl01/products
+--username root
+-P                                     
+--query 'select * from products WHERE productID > 1003 AND $CONDITIONS' <--- import subset of query
+--split-by productID                  
+--target-dir /user/etauser/product_querywhere <------------ HDFS destination dir
+
+Compress
+--------
+
+sqoop import              <----------- tool
+--connect jdbc:mysql://blrkecetarhl01/products
+--username root
+-P                                     
+--table products
+--direct                   <--------------------- use direct connectors
+--compress
+--where “productID < 1001” <--------------------- Filter records
+--target-dir /user/etauser/product_compress <---- HDFS destination dir 
+
+import-all-tables
+-----------------
+
+sqoop import              <----------- tool
+--connect jdbc:mysql://blrkecetarhl01/products
+--username root
+-P 
+
+Incremental
+-----------
+
+sqoop import                    <----------------------- tool
+--connect jdbc:mysql://blrkecetarhl01/products
+--username root
+-P                                     
+--query ‘select * from products WHERE $CONDITIONS’ 
+--split-by productID            <----------------------- used for slicing
+--check-column productID        <----------------------- column to be examined
+--incremental append            <----------------------- determines which row are new
+--last-value 1004               <----------------------- maximum value of the check column from earlier import
+--target-dir /user/etauser/product_incremental  <------- HDFS destination dir
+
+Hive-import
+-----------
+
+sqoop import                  <----------------------- tool
+--connect jdbc:mysql://blrkecetarhl01/products
+--username root
+-P                                     
+--table products
+--hive-import                 <----------------------- import table to hive
+--create-hive-table           <----------------------- check for target table existence
+--hive-table product_mysql    <----------------------- sets the table name
+--target-dir /user/etauser/SqoopFS/product_mysql <---- HDFS destination dir
+
+Export
+------
+
+sqoop export                  <----------------------- tool
+--connect jdbc:mysql://blrkecetarhl01/products
+--username root
+-P                                     
+--table products_export
+--export-dir products         <----------------------- export file
+--batch                       <----------------------- method of export                                              
+
+
+
+
