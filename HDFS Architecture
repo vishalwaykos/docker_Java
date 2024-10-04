@@ -1,0 +1,83 @@
+Hadoop Architecture
+
+HDFS-> This is the Storage layer of Hadoop. its splits large files into      	smaller blocks and distributed them across multiple nodes in the 	cluster, ensuring fault tolerance and high availability.
+
+HDFS is designed to store the very large datasets reliably to stream  
+
+MapReduce -> This is Processing Layer, It allows for parallel Processing
+	    of large datasets by breaking down into small task and sub-task 	    than can be processed simultaneously across the cluster
+
+YARN ->  This is the resource management layer. it manages and schedules  	 resources across the cluster. allowing multiple data processing	 engine to handle the data stored in HDFS
+___________________________________________________________________________
+
+HDFS :
+-	 It is specially designed file system used to store the large volume 	of data across the cluster/group of machine of Commodity hardware 	machine for streaming data access.
+
+-	In Hadoop we have concept called block.
+- 	data will stored in the form of block in Hadoop.each block can store 	128mb which is default size. we can increase to 256mb by changing its 	configuration
+
+-	for eg. we have file called .txt size is 200 mb
+	so it will stored in 2 blocks b1-128mb
+				      b2-72mb
+	and from b2 block there is remaining space that space will may 	assigned if that size file is present
+===========
+
+Replication
+===========
+	 Hadoop maintain the replication factor of 3, means Hadoop can 	 	maintains the 3/Three copy of each block
+	
+	as we are storing our data in commodity hardware machines so there 	is no guaranty for our data.
+	for the purpose Hadoop is maintaining the replication factor of 3
+	
+	so in case our one data node is down so we have stored our data in 	that node so will not able to access that data but in Hadoop we 	have a copy of 3 each block 
+
+######################
+
+For Streaming 
+	
+:- In Hadoop there is no update is allowed once the file is written
+   only appending option is possible
+as Hadoop is work on worm principle 
+WORM - Write once Read Many tme
+
+
+__________________________________________________________
+Scenario
+
+Clients want to store the His Data in HDFS;
+
+
+Writing the Data Into HDFS
+____________________________________________
+
+1.so first that request is initiare
+2.Contact Namenode: Name node maintains the complete metadata of the file 	system 
+3.File/data Splitting: 
+	now the Namenode will splits the files into block(defalt size is 	128) and determine which data node will store these blocks.
+4.Block Assignment:
+	the Namenode will provides the client with list of Datanodes for e	each block. The client then writes the block in assigned data node
+5.Replication:
+	Each block is replicated to multiple time in datanode to ensure 	fault tolerance.the client writed the block to the first datanode	,which then replicated two times in ckustter.
+6.Acknowledgment:
+	Once the block are written and replicated,The Datanode send an 		acknowledgment back to client, that file has been successfully		stored.
+
+
+_______________________________________________
+
+Reading Data From Hdfs
+
+_ start-dfs-sh
+
+2.Contact Namenode	
+	The Name node maintains the complete metadata of the File System
+	including the list of datanode where he files/blocks are stored
+3.retrive Block Loaction:
+	THe namenode responds with the locations of the blocks that make up 	the file each block locations includes a list of datanodes that 	stores replicas of the block
+
+4.Connect To Datanodes :
+	the client contaft the closest/nearest datanode that holds the 	first block of file
+5.Read Block Data:
+	The Client reads  the data from the Datanode. if the datanode is 	busy or unavailable, then client will try nex datanode in the list'
+
+6.Sequential block reading:	
+	The client continues to read the subsequent blocks from the 	respective DataNodes until the entire file is read.
