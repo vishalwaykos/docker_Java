@@ -1,0 +1,159 @@
+SQL Assignment 2
+
+insert into dish values
+    -> (1,"starter","Prawn Salad",13),
+    -> (2,"starter","Spring Scrolls",11),
+    -> (3,"main Course","Asian Noodles",25)
+    -> (4,"main course","park roast",32),
+    -> (5,"main course","Chicket Nuggets",24),
+    -> (6,"main course","Pizza Italiana",30),
+    -> (7,"dessert","Peach Cobbler",10),
+    -> (8,"dessert","Cherry Brownies",12);
+
+Q1.Add New Dish called Cevapcici with id 9 and price 27..?
+Ans->
+	INSERT INTO dish VALUES(9,"main course","Cevapcici",27);
+
+Q2.Add Kosovo Bread Id of 10 price omit..?
+Ans->
+	INSERT INTO dish(id,type,name) VALUES (10,"starter", "Kosovo Bread");
+
+Q3.
+Ans->INSERT INTO dish(id,type,name,price) VALUES (11,"main course","Gulas s knedlikem",29),
+('12', 'dessert', 'Vosi Hnizda', '14');
+
+Q4.
+ans->
+INSERT INTO dish(id, type, name, price) VALUES (13,"dessert", 
+"Gulab Jamun",50);
+
+Q5
+ans->Update dish set name="Spring Rolls" where id=2;
+
+Q6
+ans-> UPDATE dish SET name="Green Sea Dragon",price=10 WHERE id=1;
+
+Q7
+->
+First we have to disable safemode 
+due to safe mode we do not able to change/modify or update based on without primary key values
+
+UPDATE dish SET price=20 WHERE type = "main course";
+
+Q8
+->
+UPDATE dish SET price = (price*2) WHERE type="starter";
+
+Q9
+->
+DELETE FROM dish where type="dessert";
+
+Q10
+->
+Truncate table dish;
+
+Q11
+
+INSERT INTO
+The INSERT INTO statement is used to add new rows of data to a table. You specify the table name and the values for each column.
+
+ex
+INSERT INTO dish (id, name, price)
+VALUES (1, 'Pasta', 14);
+
+
+INSERT INTO SELECT
+
+The INSERT INTO SELECT statement is used to insert data into a table by selecting data from another table. This is useful for copying data from one table to another.
+
+example
+INSERT INTO dish_archive (id, name, price)
+SELECT id, name, price
+FROM dish;
+
+insert into the table dish_archive from dish table cause same data and condition/requirement should fulfilled
+
+
+Q12 What are the risks of not using a WHERE clause in an UPDATE statement?
+->
+
+without where clause update statement will modify all rows in table
+performance impact
+
+Q13.Explain about IS NULL and IS NOT NULL.
+
+ans-> NULL and IS NOT NULL  are operators in the SQL:
+
+The IS NULL operator is used to test for empty values (NULL values) in a column. A NULL value represents missing or unknown data.
+   > SELECT * FROM table_Name where col_name IS NULL;     
+ 
+-- This will retrives all rows from table where the column has null values
+
+The IS NOT NULL operator is used to test for non-empty values (non-NULL values) in a column.,
+
+> SELECT * FROM table_Name where col_name IS NOT NULL;  
+
+This will retrives all rows from table where the column dows not have a null values
+
+--
+Use Cases
+--
+Data Cleaning: Identifying and handling rows with missing data.
+
+Conditional Logic: Applying different logic based on the presence or absence of data.
+
+
+Q14How to load data from csv file into database table using MySQL workbench.
+
+ANS-> First we have to create our csv file in correct format
+and then in Work bench we have to select the database and table in which we have to add the csv file
+and now we have to open the table using select command so will get the option for import and export 
+with the import we can import our csv file from local to DAtabase table.
+
+TIPS:
+Backup Your Data: Always backup your database before performing bulk 				imports.
+Data Validation: Ensure the data in your CSV file is clean and matches the 		table schema to avoid import error
+
+Q15How to copy data from existing table to new table.
+
+ANs-> 
+with this below command will able to copy 
+
+	INSERT INTO new_table (column1, column2, column3, ...)
+	SELECT column1, column2, column3, ...
+	FROM existing_table;
+
+Q16 Explain about CRUD operation
+
+Ans-> Crud Operations are the four basic functions to persistence storage in databases:
+CRUD stands for  CREATE,READ,UPDATE and DELETE
+
+CREATE:
+
+The CREATE operation add new records to the database.
+this typically done by INSERT statement in SQL
+	INSERT INTO employees (name, position, salary)
+	VALUES ('John Doe', 'Software Engineer', 60000);
+
+READ:
+
+the read operation retrives data from the database
+This is usually done using the SELECT statement.
+	SELECT * FROM employees WHERE position = 'Software Engineer';
+
+
+UPDATE:
+
+The UPDATE operation modifies existing record in the database.
+this is done using the UPDATE statement
+	UPDATE employees
+	SET salary = 65000
+	WHERE name = 'John Doe';
+
+DELETE :
+The delete operations removes records from the database.
+this is done using the DELETE statement
+	DELETE FROM employees
+	WHERE name = 'John Doe';
+
+
