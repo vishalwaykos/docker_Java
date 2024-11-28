@@ -1,0 +1,38 @@
+# Write the python programm to reverse a list of numbers given
+
+	lst = [10, 20, 5, 4, 33, 22]
+	lst.reverse()
+	print(lst)
+
+
+# write a program to find out how many strings are there in the given list
+lst = [10,20,'aaa','bbb',33.5,'ccc',88,'bbb',25]
+print(lst)
+# print(lst.count().)
+count = 0;
+for i in lst:
+    if isinstance(i,str):
+        count=count+1;
+
+print(count)
+
+# write the programm to count the number of zero in the given programm
+
+num = 10203
+num2 = str(num)
+count=0
+for i in num2:
+    if i == '0':
+        count=count+1
+        
+print(count)
+
+
+# write a programm to know if given string is palindrome or not
+
+str1 = input("enter the word to check palidrome or not")
+
+if str1 == str1[::-1]:
+    print(str1,"is Palindrome")
+else:
+    print(str1,"is not Palindrome")
