@@ -1,0 +1,55 @@
+#5 accept the character from keyboard write the programm to check if a given character is vowel or not
+
+vowels = ('a','e','i','o','u')
+chars = input('enter the character/word')
+for i in chars:
+     if i.lower() in vowels:
+
+          print(chars," is vowel")
+          break
+else:
+     print(chars,"is not vowel")
+
+#6 write a programm to check the given number is prime or not
+
+num = int(input("enter the number to check wether its Prime or not"))
+
+if num < 2:
+    print(num,"is not prime")
+else:
+    for i in range(2,num):
+        if num%i == 0:
+            print(num,"is not prime")
+            break
+    else:
+        print(num,"is prime")
+
+# 7 write a programm to generate the prime numbers in series
+
+strtNum = int(input("Enter the starting number: "))
+endNum = int(input("Enter the ending number: "))
+
+# Iterate through each number in the given range
+for i in range(strtNum, endNum + 1):
+    flag = True
+    # Check if the number is less than 2 (not prime)
+    if i < 2:
+        flag=False
+    else:
+    # Check for factors from 2 to the square root of the number
+        for j in range(2, int(i ** 0.5) + 1):
+            if i % j == 0:
+                flag=False
+                break
+# If the number is prime, print it
+    if flag == True:
+        print(i)
+
+#8 write the programm to reverse the list without using slicing or reverse() method
+
+
+lst = [10,20,5,4,33,22]
+revLst=[]
+for i in range(len(lst)-1,-1,-1):
+     revLst.append(lst[i])
+print(revLst)
